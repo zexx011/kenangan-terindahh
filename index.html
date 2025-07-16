@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Momen Tak Terlupakan</title>
+  <link rel="stylesheet" href="kenangan.css">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #playButton {
+      display: none;
+    }
+  </style>
+</head>
+<body onclick="startAudioOnce()">
+  <div class="overlay"></div>
+  <div class="container">
+    <img src="https://files.catbox.moe/ixtdg6.jpg" alt="Foto Kenangan" class="photo">
+    <h1 id="typing"></h1>
+    <p class="subtitle">Terima kasih untuk semua momen indah yang pernah ada, untuk semua terimakasih sudah menghibur, terimakasih sudah membuat momen momen bahagia, dan sudah membuat kita lebih ceria ♥︎♥︎♥︎</p>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://s31.aconvert.com/convert/p3r68-cdx67/vky4q-b49kj.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <!-- Kanvas bintang -->
+  <canvas id="stars"></canvas>
+  <script src="kenangan.js"></script>
+
+  <!-- Script untuk autoplay -->
+  <script>
+    const audio = document.getElementById("bgMusic");
+    let started = false;
+
+    // Coba autoplay langsung saat halaman dimuat (desktop)
+    window.addEventListener("load", () => {
+      audio.play().catch(() => {
+        // autoplay gagal, tunggu klik
+        started = false;
+      });
+    });
+
+    // Mulai audio saat klik pertama di layar (mobile support)
+    function startAudioOnce() {
+      if (!started) {
+        audio.play();
+        started = true;
+      }
+    }
+  </script>
+</body>
+</html>
